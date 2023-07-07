@@ -1,37 +1,49 @@
+ 
 
+tuple_list =[]
 
 with open('1.txt', encoding='utf-8') as f:
    
-    lines = f.readlines()
-    count1 = len(lines)
-    print(lines)
-    print(count1)
-    print()
+    lines1 = f.readlines()
+    count1 = len(lines1)
+    filename1 = '1.txt'
+    # print(lines)
+    # print(count1)
+    # print()
+    new_tuple = (filename1, count1, lines1)
+    tuple_list.append(new_tuple)
 
 with open('2.txt', encoding='utf-8') as f:
     lines2 = f.readlines()
     count2 = len(lines2)
-    print(lines2)
-    print(count2)
-    print()
+    filename2 = '2.txt'
+    # print(lines2)
+    # print(count2)
+    # print()
+    new_tuple = (filename2, count2, lines2)
+    tuple_list.append(new_tuple)
     
 with open('3.txt', encoding='utf-8') as f:
     lines3 = f.readlines()
     count3 = len(lines3)
-    print(lines3)
-    print(count3)
-    print()
+    filename3 = '3.txt'
+    # print(lines3)
+    # print(count3)
+    # print()
+    new_tuple = (filename3, count3, lines3)
+    tuple_list.append(new_tuple)
 
-with open('4.txt', 'a', encoding='utf-8') as f:
-    f.write('1.txt\n') 
-    f.write(str(count1) +'\n')
-    f.writelines(lines)
-    f.write('\n')
-    f.write('2.txt\n')
-    f.write(str(count2)+'\n')
-    f.writelines(lines2)
-    f.write('\n')
-    f.write('3.txt\n')
-    f.write(str(count3)+'\n')
-    f.writelines(lines3)
-    f.write('\n')
+print()
+
+
+sorted_list = sorted(tuple_list, key = lambda x : x[1])
+print(sorted_list)
+print()
+
+with open('4.txt', 'w', encoding='utf-8') as f:
+    for item in sorted_list:
+        filename, count, lines = item
+        f.write(filename + '\n')
+        f.write(str(count) + '\n')
+        f.writelines(lines)
+        f.write('\n')
